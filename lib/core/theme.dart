@@ -1,20 +1,14 @@
 import 'package:flutter/material.dart';
+import 'app_typography.dart';
 
 class AppColors {
-  // Brand Primary
   static const Color primary = Color(0xFFFF5722);
   static const Color primaryDark = Color(0xFFE64A19);
-
-  // Brand Backgrounds & Surfaces
   static const Color background = Color(0xFFF8FAFF);
   static const Color white = Colors.white;
-
-  // Slate tones
   static const Color darkSlate = Color(0xFF0F172A);
   static const Color textMain = Color(0xFF1E293B);
   static const Color textSecondary = Color(0xFF94A3B8);
-
-  // Status Colors
   static const Color success = Color(0xFF16A34A);
   static const Color error = Color(0xFFDC2626);
   static const Color partial = Color(0xFFEA580C);
@@ -23,16 +17,17 @@ class AppColors {
 class AppTheme {
   static ThemeData get lightTheme {
     return ThemeData(
-      primaryColor: AppColors.primary,
+      useMaterial3: true,
       scaffoldBackgroundColor: AppColors.background,
-      fontFamily: 'Inter',
-      colorScheme: ColorScheme.fromSwatch().copyWith(
+
+      colorScheme: const ColorScheme.light(
         primary: AppColors.primary,
-        secondary: AppColors.darkSlate,
+        onPrimary: AppColors.white,
+        background: AppColors.background,
+        error: AppColors.error,
       ),
-      buttonTheme: const ButtonThemeData(
-        buttonColor: AppColors.primary,
-      ),
+
+      textTheme: AppTypography.textTheme,
     );
   }
 }
