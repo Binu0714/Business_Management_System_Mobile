@@ -1,7 +1,6 @@
 import 'package:bms_mobile/ui/screens/loading_screen.dart';
 import 'package:flutter/material.dart';
 import 'core/theme.dart';
-import 'ui/screens/welcome_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
