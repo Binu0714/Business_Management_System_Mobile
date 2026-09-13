@@ -103,17 +103,30 @@ class _LoginScreenState extends State<SignupScreen> with SingleTickerProviderSta
                               end: 0.7,
                               child: Align(
                                 alignment: Alignment.center,
-                                child: Text(
-                                  'Sign Up',
-                                  style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                                    fontWeight: FontWeight.bold,
-                                    color: AppColors.darkSlate,
-                                    fontSize: 28,
-                                  ),
+                                child: Column(
+                                  children: [
+                                    Text(
+                                      'Register User',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: AppColors.primary,
+                                        fontSize: 32,
+                                      ),
+                                    ),
+                                    const Text(
+                                      'Create an account for a new Admin',
+                                      style: TextStyle(
+                                        color: AppColors.textSecondary,
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ),
-                            const SizedBox(height: 24),
+
+                            const SizedBox(height: 32),
 
                             // 2. Username Label & Input
                             FadeSlideIn(
@@ -124,11 +137,12 @@ class _LoginScreenState extends State<SignupScreen> with SingleTickerProviderSta
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   const Text(
-                                    'Full Name :',
+                                    'FULL NAME',
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      color: AppColors.darkSlate,
-                                      fontSize: 15,
+                                      color: AppColors.textSecondary,
+                                      fontSize: 11,
+                                      letterSpacing: 0.5,
                                     ),
                                   ),
                                   const SizedBox(height: 8),
@@ -159,11 +173,12 @@ class _LoginScreenState extends State<SignupScreen> with SingleTickerProviderSta
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   const Text(
-                                    'Email :',
+                                    'EMAIL ADDRESS',
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      color: AppColors.darkSlate,
-                                      fontSize: 15,
+                                      color: AppColors.textSecondary,
+                                      fontSize: 11,
+                                      letterSpacing: 0.5,
                                     ),
                                   ),
                                   const SizedBox(height: 8),
@@ -195,11 +210,12 @@ class _LoginScreenState extends State<SignupScreen> with SingleTickerProviderSta
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   const Text(
-                                    'Password :',
+                                    'PASSWORD',
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      color: AppColors.darkSlate,
-                                      fontSize: 16,
+                                      color: AppColors.textSecondary,
+                                      fontSize: 11,
+                                      letterSpacing: 0.5,
                                     ),
                                   ),
                                   const SizedBox(height: 8),
@@ -244,24 +260,36 @@ class _LoginScreenState extends State<SignupScreen> with SingleTickerProviderSta
                                 width: double.infinity,
                                 height: 52,
                                 child: ElevatedButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+
+                                  },
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: AppColors.primary,
                                     foregroundColor: AppColors.white,
                                     elevation: 0,
-                                    shape: const StadiumBorder(),
-                                  ),
-                                  child: const Text(
-                                    'Sign Up',
-                                    style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(16),
                                     ),
+                                  ),
+                                  child: const Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        'Create Account',
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      SizedBox(width: 8),
+                                      Icon(Icons.arrow_forward_rounded, size: 18),
+                                    ],
                                   ),
                                 ),
                               ),
                             ),
-                            const SizedBox(height: 16),
+
+                            const SizedBox(height: 24),
 
                             // 5. Sign Up Footer Text
                             FadeSlideIn(
@@ -272,11 +300,11 @@ class _LoginScreenState extends State<SignupScreen> with SingleTickerProviderSta
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   const Text(
-                                    "Already Have an Account ? ",
+                                    "Already have an account? ",
                                     style: TextStyle(
-                                      fontSize: 12,
+                                      fontSize: 13,
                                       fontWeight: FontWeight.w500,
-                                      color: AppColors.darkSlate,
+                                      color: AppColors.textSecondary,
                                     ),
                                   ),
                                   GestureDetector(
@@ -287,11 +315,11 @@ class _LoginScreenState extends State<SignupScreen> with SingleTickerProviderSta
                                       );
                                     },
                                     child: const Text(
-                                      'Sign In',
+                                      'Login here',
                                       style: TextStyle(
-                                        fontSize: 12,
+                                        fontSize: 13,
                                         fontWeight: FontWeight.bold,
-                                        color: Colors.blue,
+                                        color: AppColors.primary,
                                       ),
                                     ),
                                   ),

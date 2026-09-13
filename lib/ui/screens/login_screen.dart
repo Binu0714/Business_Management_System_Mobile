@@ -75,19 +75,19 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                       slideOffset: 40.0,
                       child: Container(
                         width: double.infinity,
-                        padding: const EdgeInsets.all(28.0),
+                        padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 28.0),
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(28),
                           // Dual-shadow configuration for the embossed look
                           boxShadow: [
                             BoxShadow(
-                              color: const Color(0xFF0F172A).withOpacity(0.08),
+                              color: const Color(0xFF0F172A).withOpacity(0.15),
                               blurRadius: 32,
                               offset: const Offset(0, 16),
                             ),
                             BoxShadow(
-                              color: const Color(0xFF0F172A).withOpacity(0.04),
+                              color: const Color(0xFF0F172A).withOpacity(0.08),
                               blurRadius: 12,
                               offset: const Offset(0, 4),
                             ),
@@ -103,16 +103,31 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                               end: 0.7,
                               child: Align(
                                 alignment: Alignment.center,
-                                child: Text(
-                                  'Sign In',
-                                  style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                                    fontWeight: FontWeight.bold,
-                                    color: AppColors.darkSlate,
-                                    fontSize: 32,
-                                  ),
+                                child: Column(
+                                  children: [
+                                    Text(
+                                      'Welcome Back',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: AppColors.primary,
+                                        fontSize: 32,
+                                      ),
+                                    ),
+
+                                    const Text(
+                                      'Please enter your details to login',
+                                      style: TextStyle(
+                                        color: AppColors.textSecondary,
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                  ],
+
                                 ),
                               ),
                             ),
+
                             const SizedBox(height: 32),
 
                             // 2. Username Label & Input
@@ -124,11 +139,12 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   const Text(
-                                    'Username :',
+                                    'EMAIL ADDRESS',
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      color: AppColors.darkSlate,
-                                      fontSize: 16,
+                                      color: AppColors.textSecondary,
+                                      fontSize: 11,
+                                      letterSpacing: 0.5,
                                     ),
                                   ),
                                   const SizedBox(height: 8),
@@ -148,7 +164,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                                 ],
                               ),
                             ),
-                            const SizedBox(height: 24),
+                            const SizedBox(height: 16),
 
                             // 3. Password Label & Input
                             FadeSlideIn(
@@ -159,11 +175,12 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   const Text(
-                                    'Password :',
+                                    'PASSWORD',
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      color: AppColors.darkSlate,
-                                      fontSize: 16,
+                                      color: AppColors.textSecondary,
+                                      fontSize: 11,
+                                      letterSpacing: 0.5,
                                     ),
                                   ),
                                   const SizedBox(height: 8),
@@ -212,7 +229,8 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                                 ],
                               ),
                             ),
-                            const SizedBox(height: 32),
+
+                            const SizedBox(height: 20),
 
                             // 4. Sign In Button
                             FadeSlideIn(
@@ -224,27 +242,34 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                                 height: 52,
                                 child: ElevatedButton(
                                   onPressed: () {
-                                    Navigator.pushReplacement(
-                                        context,
-                                        MaterialPageRoute(builder: (context) => const SignupScreen())
-                                    );
+                                    // Navigation or execution logic
                                   },
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: AppColors.primary,
                                     foregroundColor: AppColors.white,
                                     elevation: 0,
-                                    shape: const StadiumBorder(),
-                                  ),
-                                  child: const Text(
-                                    'Sign In',
-                                    style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(16),
                                     ),
+                                  ),
+                                  child: const Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        'Login to Dashboard',
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      SizedBox(width: 8),
+                                      Icon(Icons.arrow_forward_rounded, size: 18),
+                                    ],
                                   ),
                                 ),
                               ),
                             ),
+
                             const SizedBox(height: 24),
 
                             // 5. Sign Up Footer Text
@@ -256,11 +281,11 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   const Text(
-                                    "Don't Have an Account ? ",
+                                    "Don't have an account? ",
                                     style: TextStyle(
-                                      fontSize: 12,
+                                      fontSize: 13,
                                       fontWeight: FontWeight.w500,
-                                      color: AppColors.darkSlate,
+                                      color: AppColors.textSecondary,
                                     ),
                                   ),
                                   GestureDetector(
@@ -271,11 +296,11 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                                       );
                                     },
                                     child: const Text(
-                                      'Sign Up',
+                                      'Request Access',
                                       style: TextStyle(
-                                        fontSize: 12,
+                                        fontSize: 13,
                                         fontWeight: FontWeight.bold,
-                                        color: Colors.blue,
+                                        color: AppColors.primary,
                                       ),
                                     ),
                                   ),
