@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import '../../core/theme.dart';
 import '../widgets/login_background_clipper.dart';
 import '../widgets/fade_slide_in.dart';
-import 'Signup_screen.dart';
+import 'login_screen.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class SignupScreen extends StatefulWidget {
+  const SignupScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignupScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStateMixin {
+class _LoginScreenState extends State<SignupScreen> with SingleTickerProviderStateMixin {
   bool _isPasswordObscured = true;
   late AnimationController _controller;
 
@@ -50,7 +50,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
             child: SingleChildScrollView(
               keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 16.0),
+                padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
                 child: Column(
                   children: [
 
@@ -59,10 +59,10 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                       controller: _controller,
                       start: 0.0,
                       end: 0.4,
-                      slideOffset: -40.0,
+                      slideOffset: -30.0,
                       child: Image.asset(
                         'assets/logo/logo1.png',
-                        width: 280,
+                        width: 250,
                         fit: BoxFit.contain,
                       ),
                     ),
@@ -72,22 +72,22 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                       controller: _controller,
                       start: 0.2,
                       end: 0.6,
-                      slideOffset: 40.0,
+                      slideOffset: 30.0,
                       child: Container(
                         width: double.infinity,
-                        padding: const EdgeInsets.all(28.0),
+                        padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 24.0),
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(28),
                           // Dual-shadow configuration for the embossed look
                           boxShadow: [
                             BoxShadow(
-                              color: const Color(0xFF0F172A).withOpacity(0.08),
+                              color: const Color(0xFF0F172A).withOpacity(0.15),
                               blurRadius: 32,
                               offset: const Offset(0, 16),
                             ),
                             BoxShadow(
-                              color: const Color(0xFF0F172A).withOpacity(0.04),
+                              color: const Color(0xFF0F172A).withOpacity(0.08),
                               blurRadius: 12,
                               offset: const Offset(0, 4),
                             ),
@@ -104,16 +104,16 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                               child: Align(
                                 alignment: Alignment.center,
                                 child: Text(
-                                  'Sign In',
+                                  'Sign Up',
                                   style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                                     fontWeight: FontWeight.bold,
                                     color: AppColors.darkSlate,
-                                    fontSize: 32,
+                                    fontSize: 28,
                                   ),
                                 ),
                               ),
                             ),
-                            const SizedBox(height: 32),
+                            const SizedBox(height: 24),
 
                             // 2. Username Label & Input
                             FadeSlideIn(
@@ -124,17 +124,17 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   const Text(
-                                    'Username :',
+                                    'Full Name :',
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       color: AppColors.darkSlate,
-                                      fontSize: 16,
+                                      fontSize: 15,
                                     ),
                                   ),
                                   const SizedBox(height: 8),
                                   TextFormField(
                                     decoration: InputDecoration(
-                                      hintText: 'Enter Your Username',
+                                      hintText: 'Enter Your Full Name',
                                       hintStyle: const TextStyle(color: AppColors.textSecondary, fontSize: 14),
                                       filled: true,
                                       fillColor: const Color(0xFFE2E8F0).withOpacity(0.4),
@@ -148,7 +148,43 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                                 ],
                               ),
                             ),
-                            const SizedBox(height: 24),
+
+                            const SizedBox(height: 16),
+
+                            FadeSlideIn(
+                              controller: _controller,
+                              start: 0.5,
+                              end: 0.8,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Text(
+                                    'Email :',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: AppColors.darkSlate,
+                                      fontSize: 15,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 8),
+                                  TextFormField(
+                                    decoration: InputDecoration(
+                                      hintText: 'Enter Your email Address',
+                                      hintStyle: const TextStyle(color: AppColors.textSecondary, fontSize: 14),
+                                      filled: true,
+                                      fillColor: const Color(0xFFE2E8F0).withOpacity(0.4),
+                                      border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(12),
+                                        borderSide: BorderSide.none,
+                                      ),
+                                      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+
+                            const SizedBox(height: 16),
 
                             // 3. Password Label & Input
                             FadeSlideIn(
@@ -194,27 +230,12 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                                       ),
                                     ),
                                   ),
-                                  const SizedBox(height: 12),
-                                  Align(
-                                    alignment: Alignment.centerRight,
-                                    child: GestureDetector(
-                                      onTap: () {},
-                                      child: const Text(
-                                        'Forget Password ?',
-                                        style: TextStyle(
-                                          color: Colors.blue,
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 12,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
                                 ],
                               ),
                             ),
-                            const SizedBox(height: 32),
+                            const SizedBox(height: 24),
 
-                            // 4. Sign In Button
+                            // 4. Sign Up Button
                             FadeSlideIn(
                               controller: _controller,
                               start: 0.7,
@@ -223,12 +244,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                                 width: double.infinity,
                                 height: 52,
                                 child: ElevatedButton(
-                                  onPressed: () {
-                                    Navigator.pushReplacement(
-                                        context,
-                                        MaterialPageRoute(builder: (context) => const SignupScreen())
-                                    );
-                                  },
+                                  onPressed: () {},
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: AppColors.primary,
                                     foregroundColor: AppColors.white,
@@ -236,7 +252,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                                     shape: const StadiumBorder(),
                                   ),
                                   child: const Text(
-                                    'Sign In',
+                                    'Sign Up',
                                     style: TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.bold,
@@ -245,7 +261,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                                 ),
                               ),
                             ),
-                            const SizedBox(height: 24),
+                            const SizedBox(height: 16),
 
                             // 5. Sign Up Footer Text
                             FadeSlideIn(
@@ -256,7 +272,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   const Text(
-                                    "Don't Have an Account ? ",
+                                    "Already Have an Account ? ",
                                     style: TextStyle(
                                       fontSize: 12,
                                       fontWeight: FontWeight.w500,
@@ -266,12 +282,12 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                                   GestureDetector(
                                     onTap: () {
                                       Navigator.pushReplacement(
-                                          context,
-                                          MaterialPageRoute(builder: (context) => const SignupScreen())
+                                        context,
+                                        MaterialPageRoute(builder: (context) => const LoginScreen()),
                                       );
                                     },
                                     child: const Text(
-                                      'Sign Up',
+                                      'Sign In',
                                       style: TextStyle(
                                         fontSize: 12,
                                         fontWeight: FontWeight.bold,
