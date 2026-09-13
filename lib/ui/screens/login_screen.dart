@@ -3,6 +3,7 @@ import '../../core/theme.dart';
 import '../widgets/login_background_clipper.dart';
 import '../widgets/fade_slide_in.dart';
 import 'Signup_screen.dart';
+import 'main_shell_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -242,7 +243,10 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                                 height: 52,
                                 child: ElevatedButton(
                                   onPressed: () {
-                                    // Navigation or execution logic
+                                    Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => const MainShellScreen()), // Navigate to the home shell
+                                    );
                                   },
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: AppColors.primary,
