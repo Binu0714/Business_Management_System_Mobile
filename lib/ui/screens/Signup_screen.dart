@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../core/theme.dart';
-import '../widgets/login_background_clipper.dart';
-import '../widgets/fade_slide_in.dart';
+import '../widgets/common/auth_background_clipper.dart';
+import '../widgets/common/fade_slide_in.dart';
 import 'login_screen.dart';
 
 class SignupScreen extends StatefulWidget {

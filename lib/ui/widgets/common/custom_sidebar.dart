@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../core/theme.dart';
-import '../screens/login_screen.dart';
+import '../../../core/theme.dart';
+import '../../screens/login_screen.dart';
 import 'fade_slide_in.dart';
 
 class CustomSidebar extends StatefulWidget {

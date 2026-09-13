@@ -1,8 +1,9 @@
 // lib/ui/screens/main_shell_screen.dart
 import 'package:flutter/material.dart';
 import '../../core/theme.dart';
-import '../widgets/custom_sidebar.dart';     // Import Sidebar
-import '../widgets/custom_bottom_nav.dart';   // Import Bottom Nav
+import '../widgets/common/custom_sidebar.dart';
+import '../widgets/common/custom_bottom_nav.dart';
+import 'dashboard_screen.dart';
 
 class MainShellScreen extends StatefulWidget {
   const MainShellScreen({super.key});
@@ -15,28 +16,24 @@ class _MainShellScreenState extends State<MainShellScreen> {
   int _currentIndex = 0;
 
   final List<Widget> _pages = [
-    const PlaceholderPage(title: 'Home Content Area'),
-    const PlaceholderPage(title: 'Wallet Content Area'),
-    const PlaceholderPage(title: 'Analytics Content Area'),
-    const PlaceholderPage(title: 'Settings Content Area'),
+    const DashboardScreen(),
+    const PlaceholderPage(title: 'Purchases Content Area'),
+    const PlaceholderPage(title: 'Inventory Content Area'),
+    const PlaceholderPage(title: 'Sales Content Area'),
   ];
 
   final List<String> _titles = [
     'Home',
-    'Wallet',
-    'Analytics',
-    'Settings',
+    'Purchases',
+    'Inventory',
+    'Sales',
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.background,
-
-      // 1. Decoupled Sidebar Widget
       drawer: const CustomSidebar(),
-
-      // 2. AppBar
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
@@ -66,18 +63,14 @@ class _MainShellScreenState extends State<MainShellScreen> {
           ),
         ],
       ),
-
-      // 3. Keep-Alive Page Body
       body: IndexedStack(
         index: _currentIndex,
         children: _pages,
       ),
-
-      // 4. Decoupled Custom Bottom Nav Widget
       bottomNavigationBar: CustomBottomNav(
         currentIndex: _currentIndex,
         onTabSelected: (index) {
-          // Updates the state in this parent widget, causing body to switch
+          if (_currentIndex == index) return;
           setState(() {
             _currentIndex = index;
           });
@@ -87,7 +80,6 @@ class _MainShellScreenState extends State<MainShellScreen> {
   }
 }
 
-// Simple reusable Placeholder page widget
 class PlaceholderPage extends StatelessWidget {
   final String title;
   const PlaceholderPage({super.key, required this.title});

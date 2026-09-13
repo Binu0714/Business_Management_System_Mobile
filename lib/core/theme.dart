@@ -12,6 +12,13 @@ class AppColors {
   static const Color success = Color(0xFF16A34A);
   static const Color error = Color(0xFFDC2626);
   static const Color partial = Color(0xFFEA580C);
+  static const Color info = Color(0xFF2563EB);
+  static const Color infoLight = Color(0xFFEFF6FF);
+  static const Color successLight = Color(0xFFF0FDF4);
+  static const Color errorLight = Color(0xFFFEF2F2);
+  static const Color partialLight = Color(0xFFFFF7ED);
+  static const Color slateLight = Color(0xFFF1F5F9);
+  static const Color slateDark = Color(0xFF475569);
 }
 
 class AppTheme {
